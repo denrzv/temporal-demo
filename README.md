@@ -13,6 +13,20 @@ Request types include `TECH_REQUEST`, `CLAIM`, and `CUSTOM`; routes can introduc
 
 [View the request register](docs/request-register.png).
 
+## Run from a phone or browser
+
+[**Open this demo in GitHub Codespaces**](https://codespaces.new/denrzv/temporal-demo/tree/feature/service-request-workflows?quickstart=1).
+
+1. Sign in to GitHub and create the codespace for the `feature/service-request-workflows` branch. No merge is required.
+2. Wait for the first build (usually several minutes). Java, Docker, Temporal, and the application are set up automatically.
+3. The application should open in a browser tab. If it does not, open **Ports** in the browser editor and tap **Open in Browser** beside port **8080**, labeled **Service requests**. Port **8233** opens Temporal's event history UI.
+
+Keep port visibility **Private**: you can access the forwarded URLs while signed in to your GitHub account. Bookmark the 8080 URL on your phone and use it directly while the codespace is running. These are full Spring Boot and Temporal services, not a static UI preview. The app's Temporal links use the remote 8233 address automatically.
+
+Codespaces uses your GitHub account's included quota or billing. Stop it from [your codespaces list](https://github.com/codespaces) when finished. An idle codespace can stop automatically; resume it to use the same URLs and persisted data. Codespaces is a development environment, not an always-on deployment.
+
+The bootstrap is in `.devcontainer/`. Startup logs are in `data/codespaces-app.log` if anything fails.
+
 ## Run
 
 With Docker Compose:
