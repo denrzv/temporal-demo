@@ -1,0 +1,35 @@
+services:
+  temporal:
+    image: temporalio/temporal:1.4.1
+    command: server start-dev --ip 0.0.0.0 --db-filename /home/temporal/temporal.db --ui-ip 0.0.0.0
+    environment:
+      NO_PROXY: localhost,127.0.0.1,0.0.0.0,::1,temporal,app
+      no_proxy: localhost,127.0.0.1,0.0.0.0,::1,temporal,app
+    ports:
+      - "127.0.0.1:7233:7233"
+      - "127.0.0.1:8233:8233"
+    volumes:
+      - temporal-home:/home/temporal
+    healthcheck:
+      test: ["CMD", "temporal", "operator", "cluster", "health", "--address", "127.0.0.1:7233"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      NO_PROXY: localhost,127.0.0.1,0.0.0.0,::1,temporal,app
+      no_proxy: localhost,127.0.0.1,0.0.0.0,::1,temporal,app
+      TEMPORAL_ADDRESS: temporal:7233
+      SYSTEMS_URL: http://localhost:8080/mock/systems
+      DATABASE_URL: jdbc:h2:file:/app/data/service-requests;DB_CLOSE_ON_EXIT=FALSE
+    volumes:
+      - app-data:/app/data
+    depends_on:
+      temporal:
+        condition: service_healthy
+volumes:
+  temporal-home:
+  app-data:
