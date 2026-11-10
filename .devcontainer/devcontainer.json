@@ -1,0 +1,33 @@
+{
+  "name": "Temporal service requests",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "8gb"
+  },
+  "forwardPorts": [8080, 8233],
+  "portsAttributes": {
+    "8080": {
+      "label": "Service requests — open this UI",
+      "onAutoForward": "openBrowser",
+      "protocol": "http"
+    },
+    "8233": {
+      "label": "Temporal event history",
+      "onAutoForward": "notify",
+      "protocol": "http"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  },
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  }
+}

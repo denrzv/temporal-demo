@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#143b35"><title>Relay · Service operations</title>
+  <link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#requests"><span class="brand-mark">r</span>relay<span class="brand-dot">.</span></a>
+    <div class="workspace"><span class="workspace-icon">S</span><div>Service operations<small>Development workspace</small></div><span class="muted">⌄</span></div>
+    <div class="nav-label">WORKSPACE</div>
+    <nav aria-label="Main navigation">
+      <a href="#requests" data-page="requests"><span>▤</span>Service requests<span class="nav-count" id="request-count">0</span></a>
+      <a href="#inbox" data-page="inbox"><span>▣</span>My task inbox<span class="nav-count" id="inbox-count">0</span></a>
+      <a href="#routes" data-page="routes"><span>⑂</span>Execution routes</a>
+      <a href="#directory" data-page="directory"><span>♧</span>Agents & groups</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="temporal-label"><span class="pulse"></span>Powered by Temporal</div><p>Durable workflows.<br>Visible progress.</p><a id="temporal-link" href="http://localhost:8233" target="_blank" rel="noreferrer">Open Temporal UI ↗</a></div>
+    <label class="agent-label" for="agent-select">DEMO AGENT</label><select id="agent-select" aria-label="Active demo agent"></select>
+  </aside>
+  <div class="main-shell"><header class="topbar"><span>Workspace <span class="crumb">/</span> <span id="breadcrumb">Service requests</span></span><div><span class="environment"><i></i>Local development</span><span class="avatar" id="avatar">AM</span></div></header><main id="content" tabindex="-1"><div class="empty">Loading workspace…</div></main><footer>RELAY / SERVICE OPERATIONS<span>Spring Boot + Temporal</span></footer></div>
+  <dialog id="dialog"><div id="dialog-body"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
